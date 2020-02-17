@@ -10,6 +10,8 @@
 
 # production
 /build
+/wheres-the
+/public/thumbs
 
 # misc
 .DS_Store
