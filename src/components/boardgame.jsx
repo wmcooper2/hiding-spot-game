@@ -3,9 +3,10 @@ import ReactCardFlip from "react-card-flip";
 
 const FlipCardBack = props => {
   // console.log("FlipCardBack, props: ", props);
-  const { cardID, handleClick, hiddenItem } = props;
-  console.log(hiddenItem);
-  const item = hiddenItem !== false ? "item" : "NO";
+  const { cardID, handleClick, hiddenItem, hidingSpot } = props;
+  // console.log("FlipCardBack, hiddenItem:", hiddenItem);
+  // const item = hiddenItem !== false ? "item" : "NO";
+  const item = cardID === hidingSpot ? "YES" : "NO";
   return (
     <div className="card card-front" onClick={() => handleClick(cardID)}>
       {item}
@@ -14,6 +15,7 @@ const FlipCardBack = props => {
 };
 
 const FlipCardFront = props => {
+  // console.log("FlipCardFront, props: ", props);
   const { card, cardID, handleClick } = props;
   return (
     <img
@@ -26,7 +28,7 @@ const FlipCardFront = props => {
 };
 
 const FlipCard = props => {
-  //   console.log("FlipCard, props: ", props);
+  // console.log("FlipCard, props: ", props);
   const { card } = props;
   return (
     <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
@@ -37,8 +39,8 @@ const FlipCard = props => {
 };
 
 const Row = props => {
-  //   console.log("Row, props: ", props);
-  const { boardShape, deck, rowID, handleClick } = props;
+  // console.log("Row, props: ", props);
+  const { boardShape, deck, rowID, handleClick, hidingSpot } = props;
   //   console.log(rowID);
   let rowCards = [];
   for (let i = 0; i < boardShape.x; i++) {
@@ -47,8 +49,9 @@ const Row = props => {
         key={boardShape.x * rowID + i}
         cardID={boardShape.x * rowID + i}
         card={deck[boardShape.x * rowID + i]}
-        hiddenItem={deck[boardShape.x*rowID+i].hiddenItem}
+        hiddenItem={deck[boardShape.x * rowID + i].hiddenItem}
         handleClick={handleClick}
+        hidingSpot={hidingSpot}
       />
     );
   }

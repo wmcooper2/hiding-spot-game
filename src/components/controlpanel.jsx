@@ -37,7 +37,7 @@ const SettingsBtn = props => {
     );
   } else {
     return (
-      <Link to="settings">
+      <Link to="/settings">
         <Button
           onClick={() => changeScreen("settings")}
           variant="primary"
@@ -51,7 +51,7 @@ const SettingsBtn = props => {
 };
 
 const ControlPanel = props => {
-  console.log("ControlPanel, props: ", props);
+  // console.log("ControlPanel, props: ", props);
   return (
     <div className="controlpanel">
       {/* <div className="deckinplay">{deckName}</div> */}
@@ -66,6 +66,7 @@ const ControlPanel = props => {
           Change
         </Button>
       </div>
+      <div className="instructions">Choose a vocab set and the amount of cards. Click change to move the hidden item and shuffle the cards.</div>
     </div>
   );
 };
