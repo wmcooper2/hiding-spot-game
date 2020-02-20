@@ -3,10 +3,19 @@ import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
-import { testDeck, fruits, animals, colors } from "./decks";
+// import { testDeck, fruits, animals, colors } from "./decks";
+//make api calls to load images
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
+console.log(process.env.REACT_APP_BUCKET);
+
+// example api call
+async function getbutts() {
+  const answer = await fetch("https://www.teflassistant.com/api/catbutt");
+  return answer;
+}
+getbutts().then(answer => console.log(answer.json()));
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +28,7 @@ class App extends React.Component {
       hidingSpot: 0
     };
 
+    //make api calls to load the images here?
     this.deckChoices = [
       { name: "colors", deck: colors },
       { name: "fruits", deck: fruits },
