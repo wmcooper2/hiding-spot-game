@@ -11,7 +11,7 @@
 # production
 /build
 /wheres-the*
-/public
+/public/thumbs
 
 # misc
 .DS_Store

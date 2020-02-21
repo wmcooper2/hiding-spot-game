@@ -3,9 +3,9 @@ import ReactCardFlip from "react-card-flip";
 
 const FlipCardBack = props => {
   // console.log("FlipCardBack, props: ", props);
-  const { cardID, handleClick, hiddenItem, hidingSpot } = props;
-  // console.log("FlipCardBack, hiddenItem:", hiddenItem);
-  // const item = hiddenItem !== false ? "item" : "NO";
+  // const { cardID, handleClick, hiddenItem, hidingSpot } = props;
+  const { cardID, handleClick, hidingSpot } = props;
+  // hiddenItem === true ? console.log("I'm hiding here: ", cardID) : "NO";
   const item = cardID === hidingSpot ? "YES" : "NO";
   return (
     <div className="card card-front" onClick={() => handleClick(cardID)}>
@@ -15,7 +15,7 @@ const FlipCardBack = props => {
 };
 
 const FlipCardFront = props => {
-  // console.log("FlipCardFront, props: ", props);
+  console.log("FlipCardFront, props: ", props);
   const { card, cardID, handleClick } = props;
   return (
     <img
