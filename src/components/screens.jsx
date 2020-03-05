@@ -2,7 +2,6 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 const BoardShapeScreen = props => {
-  // console.log("BoardShapeScreen, props: ", props);
   const { changeBoardShape, choices } = props;
   let shapes = [];
   choices.forEach(choice => {
@@ -22,7 +21,6 @@ const BoardShapeScreen = props => {
 };
 
 const VocabScreen = props => {
-  // console.log("VocabScreen, props: ", props);
   const { changeVocab, choices } = props;
   let decks = [];
   choices.forEach(choice =>

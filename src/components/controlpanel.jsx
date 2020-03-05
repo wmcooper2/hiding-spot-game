@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const DecksBtn = props => {
   const { changeScreen, currentScreen } = props;
-  //   console.log("DecksBtn, props: ", props);
   if (currentScreen === "decks") {
     return (
       <Link to="/">
@@ -25,7 +24,6 @@ const DecksBtn = props => {
 };
 
 const SettingsBtn = props => {
-  //   console.log("SettingsBtn, props: ", props);
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "settings") {
     return (
@@ -51,10 +49,8 @@ const SettingsBtn = props => {
 };
 
 const ControlPanel = props => {
-  // console.log("ControlPanel, props: ", props);
   return (
     <div className="controlpanel">
-      {/* <div className="deckinplay">{deckName}</div> */}
       <div className="controls">
         <DecksBtn {...props} />
         <SettingsBtn {...props} />
