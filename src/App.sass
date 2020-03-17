@@ -1,28 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap')
-$cardW: 120px
-$cardH: 130px
-$Font: 'Rubik', sans-serif
 $controlPanelColor:  rgba(22, 122, 246, 1)
 $LightGreen: rgba(151, 250, 150, 1)
+$lightBlue: rgb(146, 193, 255)
+$darkBlue: rgb(0, 103, 238)
+$fontColor: rgb(0,0,0)
+$Font: 'Rubik', sans-serif
+$softBorder: 3px
+
+$boardW: 90%
+$viewHeight: 100vh
+$controlPanelW: 25vw
+
+$cardMarginW: 1vw
+$cardMarginH: 1vh
+$totalCardMarginW: $cardMarginW * 5
+$totalCardMarginH: $cardMarginH * 4
+$cardW: (90vw - $controlPanelW - $totalCardMarginW) / 4
+$cardH: (100vh / 3) - $totalCardMarginH
 
 .main
   display: flex
   flex-direction: row
   justify-content: space-between
-  height: 99vh
+  height: $viewHeight
   align-items: center
   margin: auto auto
+  background-color: $lightBlue
 
 .board
-  width: 90%
-  height: 100%
+  width: $boardW
+  height: $viewHeight
   display: flex
   flex-direction: column
   justify-content: space-around
 
 .screen
-  width: 90%
-  height: 100%
+  width: $boardW
+  height: $viewHeight
   display: flex
   flex-direction: row
   justify-content: center
@@ -33,9 +47,9 @@ $LightGreen: rgba(151, 250, 150, 1)
   justify-content: space-around
 
 .card,
-  border-radius: 3px
-  width: 200px
-  height: 220px
+  border-radius: $softBorder
+  width: $cardW
+  height: $cardH
 
 .card:hover
   box-shadow: 0px 0px 2px 2px
@@ -49,40 +63,47 @@ $LightGreen: rgba(151, 250, 150, 1)
 
 .controlpanel
   display: flex
-  background-color: $controlPanelColor
+  width: $controlPanelW
+  height: $viewHeight
   flex-direction: column
   justify-content: space-between
   align-items: center
   font-family: $Font
-  width: 10%
-  height: 100%
-
-.teams
-  display: flex
-  flex-direction: column
-  justify-content: flex-start
-
-.team, .teamsbtn
-  display: flex
-  flex-direction: row
-  align-items: center
-
-.teamname, .teamscore
-  margin: auto 10px
+  font-size: 1rem
+  background-color: $lightBlue
+  color: $fontColor
 
 .controls
   display: flex
   flex-direction: column
   justify-content: flex-start
-  background-color: $controlPanelColor
 
+.controlbtn
+  margin: 2vh auto
+
+//not responsive, due to Bootstrap
 .deck
   display: flex
   justify-content: center
-  width: 100px
-  height: 100px
-  margin: 2px
+  width: $cardW
+  height: $cardH
 
 .instructions
   text-align: center
-  color: white
+  font-weight: bold
+  width: 90%
+  margin: 3vh 3vw
+
+a, a:hover
+  text-decoration: none
+  color: $fontColor
+  width: 100%
+
+button
+  width: 100%
+  background-color: $lightBlue
+  border: none
+  border-radius: $softBorder
+
+button:hover
+  box-shadow: inset 0px 0px 2px 2px $darkBlue

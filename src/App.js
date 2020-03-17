@@ -3,7 +3,7 @@ import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
-import { testDeck, fruits, animals, colors } from "./decks";
+import { misc, fruits, animals, colors } from "./decks";
 //make api calls to load images from deck files elsewhere
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
@@ -22,8 +22,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       boardShape: defaultShape,
-      deck: testDeck,
-      deckName: "testdeck",
+      deck: misc,
+      deckName: "misc",
       currentScreen: "game",
       hidingSpot: 0
     };
@@ -33,7 +33,7 @@ class App extends React.Component {
       { name: "colors", deck: colors },
       { name: "fruits", deck: fruits },
       { name: "animals", deck: animals },
-      { name: "testdeck", deck: testDeck }
+      { name: "misc", deck: misc }
     ];
 
     this.cardClick = this.cardClick.bind(this);

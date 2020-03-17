@@ -12,7 +12,7 @@ const FlipCardBack = props => {
 };
 
 const FlipCardFront = props => {
-  console.log("FlipCardFront, props: ", props);
+  // console.log("FlipCardFront, props: ", props);
   const { card, cardID, handleClick } = props;
   return (
     <img

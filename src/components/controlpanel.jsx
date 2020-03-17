@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 const DecksBtn = props => {
@@ -7,17 +7,17 @@ const DecksBtn = props => {
   if (currentScreen === "decks") {
     return (
       <Link to="/">
-        <Button onClick={() => changeScreen("/")} variant="primary" block>
+        <button className="controlbtn" onClick={() => changeScreen("/")}>
           Game
-        </Button>
+        </button>
       </Link>
     );
   } else {
     return (
       <Link to="/decks">
-        <Button onClick={() => changeScreen("decks")} variant="primary" block>
+        <button className="controlbtn" onClick={() => changeScreen("decks")}>
           Vocab
-        </Button>
+        </button>
       </Link>
     );
   }
@@ -28,21 +28,17 @@ const SettingsBtn = props => {
   if (currentScreen === "settings") {
     return (
       <Link to="/">
-        <Button onClick={() => changeScreen("/")} variant="primary" block>
+        <button className="controlbtn" onClick={() => changeScreen("/")}>
           Game
-        </Button>
+        </button>
       </Link>
     );
   } else {
     return (
       <Link to="/settings">
-        <Button
-          onClick={() => changeScreen("settings")}
-          variant="primary"
-          block
-        >
+        <button className="controlbtn" onClick={() => changeScreen("settings")}>
           Cards
-        </Button>
+        </button>
       </Link>
     );
   }
@@ -54,15 +50,14 @@ const ControlPanel = props => {
       <div className="controls">
         <DecksBtn {...props} />
         <SettingsBtn {...props} />
-        <Button
-          onClick={() => props.changeHidingSpot()}
-          variant="primary"
-          block
-        >
+        <button className="controlbtn" onClick={() => props.changeHidingSpot()}>
           Change
-        </Button>
+        </button>
       </div>
-      <div className="instructions">Choose a vocab set and the amount of cards. Click change to move the hidden item and shuffle the cards.</div>
+      <div className="instructions">
+        Choose a vocab set and the amount of cards. Click "Change" to move the
+        hidden item and shuffle the cards.
+      </div>
     </div>
   );
 };
