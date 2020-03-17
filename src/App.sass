@@ -4,6 +4,7 @@ $LightGreen: rgba(151, 250, 150, 1)
 $lightBlue: rgb(146, 193, 255)
 $darkBlue: rgb(0, 103, 238)
 $fontColor: rgb(0,0,0)
+$cardColor: rgb(255, 255, 255)
 $Font: 'Rubik', sans-serif
 $softBorder: 3px
 
@@ -107,3 +108,14 @@ button
 
 button:hover
   box-shadow: inset 0px 0px 2px 2px $darkBlue
+
+button.deck
+  width: $cardW
+  height: $cardH
+  background-color: $cardColor
+  font-color: $fontColor
+  font-size: 3rem
+  margin: 1vh 1vw
+  overflow: hidden
+  word-wrap: normal
+  border-radius: $softBorder

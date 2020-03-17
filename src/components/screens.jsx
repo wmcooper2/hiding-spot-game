@@ -1,19 +1,18 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 
 const BoardShapeScreen = props => {
   const { changeBoardShape, choices } = props;
   let shapes = [];
   choices.forEach(choice => {
     shapes.push(
-      <Button
+      <button
         key={choice.size}
         className="deck"
         onClick={() => changeBoardShape(choice.size)}
-        style={{ fontSize: "3em", width: "3em", height: "3em" }}
       >
         {choice.size}
-      </Button>
+      </button>
     );
   });
 
@@ -25,14 +24,13 @@ const VocabScreen = props => {
   let decks = [];
   choices.forEach(choice =>
     decks.push(
-      <Button
+      <button
         key={choice.name}
         className="deck"
         onClick={() => changeVocab(choice.name)}
-        style={{ fontSize: "3em", width: "auto", height: "3em" }}
       >
         {choice.name}
-      </Button>
+      </button>
     )
   );
 
