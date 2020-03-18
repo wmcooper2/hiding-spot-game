@@ -10,7 +10,8 @@
 
 # production
 /build
-/wheres-the*
+/hiding-spot-game*
+
 
 # misc
 .DS_Store
