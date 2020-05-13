@@ -4,18 +4,9 @@ import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
 import { misc, fruits, animals, colors } from "./decks";
-//make api calls to load images from deck files elsewhere
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// console.log(process.env.REACT_APP_BUCKET);
-// example api call, future functionality
-// async function getbutts() {
-// const answer = await fetch("https://www.teflassistant.com/api/catbutt");
-// return answer;
-// }
-// getbutts().then(answer => console.log(answer.json()));
 
 class App extends React.Component {
   constructor(props) {
@@ -25,15 +16,17 @@ class App extends React.Component {
       deck: misc,
       deckName: "misc",
       currentScreen: "game",
-      hidingSpot: 0
+      hidingSpot: 0,
+      boardWidth: null,
+      boardHeight: null,
+      cardSize: null,
     };
 
-    //make api calls to load the images here?
     this.deckChoices = [
       { name: "colors", deck: colors },
       { name: "fruits", deck: fruits },
       { name: "animals", deck: animals },
-      { name: "misc", deck: misc }
+      { name: "misc", deck: misc },
     ];
 
     this.cardClick = this.cardClick.bind(this);
@@ -43,23 +36,24 @@ class App extends React.Component {
     this.changeScreen = this.changeScreen.bind(this);
     this.updateBoard = this.updateBoard.bind(this);
     this.flipAllCards = this.flipAllCards.bind(this);
+    // this.updateCardSize();
   }
 
-  cardClick = props => {
+  cardClick = (props) => {
     let deck = this.state.deck.slice();
     deck[props].flipped = !deck[props].flipped;
     this.setState({
-      deck: deck
+      deck: deck,
     });
   };
 
   flipAllCards = () => {
     let deck = this.state.deck.slice();
-    deck.forEach(item => {
+    deck.forEach((item) => {
       item.flipped = false;
     });
     this.setState({
-      deck: deck
+      deck: deck,
     });
   };
 
@@ -67,17 +61,16 @@ class App extends React.Component {
     let choice = Math.floor(Math.random() * this.state.boardShape.size);
     this.setState({ hidingSpot: choice });
     this.flipAllCards();
-    // this.updateBoard(this.state.deckName);
     this.updateBoard();
   };
 
-  updateBoard = props => {
+  updateBoard = (props) => {
     let deckName = this.state.deckName;
-    let deck = this.deckChoices.filter(choice => choice.name === deckName);
+    let deck = this.deckChoices.filter((choice) => choice.name === deckName);
     deck = deck[0].deck; // because of filter
     let boardShape = this.state.boardShape;
     let deckCopy = deck.slice(); //copy so you don't ruin the original
-    deckCopy.forEach(item => (item.flipped = false)); // reset flipped before display
+    deckCopy.forEach((item) => (item.flipped = false)); // reset flipped before display
     let randomOrder = [];
     const randomLimit = deckCopy.length;
     for (let i = 0; i < randomLimit; i++) {
@@ -90,36 +83,61 @@ class App extends React.Component {
       return {
         deck: randomOrder,
         deckName: deckName,
-        boardShape: boardShape
+        boardShape: boardShape,
       };
     });
   };
 
-  changeBoardShape = props => {
+  changeBoardShape = (props) => {
     //filter the object that matches the size
-    let newShape = boardShapes.filter(item => item.size === props);
+    let newShape = boardShapes.filter((item) => item.size === props);
     this.setState(() => {
       return { boardShape: newShape[0] };
     });
   };
 
-  changeScreen = props => {
-    console.log("changeScreen, props: ", props);
+  changeScreen = (props) => {
     if (props === "/") {
       //return to game board screen
       this.updateBoard();
     }
     this.setState({
-      currentScreen: props
+      currentScreen: props,
     });
   };
 
-  changeVocab = props => {
-    let newDeck = this.deckChoices.filter(choice => choice.name === props);
+  changeVocab = (props) => {
+    let newDeck = this.deckChoices.filter((choice) => choice.name === props);
     this.setState(() => {
       return { deckName: newDeck[0].name };
     });
   };
+
+  updateCardSize = () => {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let cardSize =
+      width > height
+        ? Math.floor((height / this.state.boardShape.y) * 0.9)
+        : Math.floor((width / this.state.boardShape.x) * 0.9);
+
+    this.setState(() => {
+      return {
+        boardWidth: width, //because of control panel width and border
+        boardHeight: height,
+        cardSize: cardSize,
+      };
+    });
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.updateCardSize);
+    this.updateCardSize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateCardSize);
+  }
 
   render() {
     return (
@@ -132,6 +150,7 @@ class App extends React.Component {
               <BoardGame handleClick={this.cardClick} {...this.state} />
             )}
           />
+
           <Route
             path="/settings"
             render={() => (
@@ -141,6 +160,7 @@ class App extends React.Component {
               />
             )}
           />
+
           <Route
             path="/decks"
             render={() => (
@@ -150,6 +170,7 @@ class App extends React.Component {
               />
             )}
           />
+
           <ControlPanel
             changeScreen={this.changeScreen}
             changeHidingSpot={this.changeHidingSpot}

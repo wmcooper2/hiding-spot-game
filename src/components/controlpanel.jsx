@@ -1,8 +1,7 @@
 import React from "react";
-// import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const DecksBtn = props => {
+const DecksBtn = (props) => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "decks") {
     return (
@@ -23,7 +22,7 @@ const DecksBtn = props => {
   }
 };
 
-const SettingsBtn = props => {
+const SettingsBtn = (props) => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "settings") {
     return (
@@ -44,7 +43,7 @@ const SettingsBtn = props => {
   }
 };
 
-const ControlPanel = props => {
+const ControlPanel = (props) => {
   return (
     <div className="controlpanel">
       <div className="controls">
