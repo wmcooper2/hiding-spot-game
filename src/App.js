@@ -4,8 +4,8 @@ import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
 import { misc, fruits, animals, colors } from "./decks";
-import { HashRouter, Route } from "react-router-dom";
-import "./App.sass";
+import { BrowserRouter, Route } from "react-router-dom";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
@@ -23,9 +23,9 @@ class App extends React.Component {
     };
 
     this.deckChoices = [
-      { name: "colors", deck: colors },
-      { name: "fruits", deck: fruits },
-      { name: "animals", deck: animals },
+      { name: "color", deck: colors },
+      { name: "fruit", deck: fruits },
+      { name: "animal", deck: animals },
       { name: "misc", deck: misc },
     ];
 
@@ -141,7 +141,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div className="main">
           <Route
             exact
@@ -177,7 +177,7 @@ class App extends React.Component {
             {...this.state}
           />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

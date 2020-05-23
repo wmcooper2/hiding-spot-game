@@ -1,10 +1,9 @@
 import React from "react";
-// import Button from "react-bootstrap/Button";
 
-const BoardShapeScreen = props => {
+const BoardShapeScreen = (props) => {
   const { changeBoardShape, choices } = props;
   let shapes = [];
-  choices.forEach(choice => {
+  choices.forEach((choice) => {
     shapes.push(
       <button
         key={choice.size}
@@ -19,10 +18,10 @@ const BoardShapeScreen = props => {
   return <div className="screen"> {shapes.reverse()} </div>;
 };
 
-const VocabScreen = props => {
+const VocabScreen = (props) => {
   const { changeVocab, choices } = props;
   let decks = [];
-  choices.forEach(choice =>
+  choices.forEach((choice) =>
     decks.push(
       <button
         key={choice.name}

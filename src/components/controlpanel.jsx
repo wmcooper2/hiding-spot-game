@@ -54,8 +54,7 @@ const ControlPanel = (props) => {
         </button>
       </div>
       <div className="instructions">
-        Choose a vocab set and the amount of cards. Click "Change" to move the
-        hidden item and shuffle the cards.
+        Choose a vocab set and card amount. Click "Change" to reset the game.
       </div>
     </div>
   );

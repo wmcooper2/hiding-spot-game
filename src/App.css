@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+:root {
+  --lightBlue: rgb(146, 193, 255);
+  --darkBlue: rgb(0, 103, 238);
+  --fontColor: rgb(0, 0, 0);
+  --cardColor: rgb(255, 255, 255);
+  --Font: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
+    "Arial";
+  --softBorder: 2%;
+
+  --boardW: 90%;
+  --viewH: 100vh;
+  --controlsW: 25vw;
+
+  --cardMarginW: 1vw;
+  --cardMarginH: 1vh;
+  --totalCardMarginW: calc(var(--cardMarginW) * 5);
+  --totalCardMarginH: calc(var(--cardMarginH) * 4);
+  --cardW: calc((90vw - var(--controlsW) - var(--totalCardMarginW)) / 4);
+  --cardH: calc((100vh / 3) - var(--totalCardMarginH));
+  font-size: 1.5rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: var(--viewH);
+  align-items: center;
+  margin: auto auto;
+  background-color: var(--lightBlue);
+}
+
+.board {
+  width: var(--boardW);
+  height: var(--viewH);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.screen {
+  width: var(--boardW);
+  height: var(--viewH);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  border-radius: var(--softBorder);
+  width: var(--cardW);
+  height: var(--cardH);
+}
+
+.card:hover {
+  box-shadow: 0px 0px 2px 2px;
+}
+
+.card-front {
+  font-family: var(--Font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+}
+
+.controlpanel {
+  display: flex;
+  width: var(--controlsW);
+  height: var(--viewH);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--Font);
+  font-size: 1rem;
+  background-color: var(--lightBlue);
+  color: var(--fontColor);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.controlbtn {
+  margin: 2vh auto;
+  font-size: 2rem;
+}
+
+.deck {
+  display: flex;
+  justify-content: center;
+  width: var(--cardW);
+  height: var(--cardH);
+  font-family: var(--Font);
+}
+
+.instructions {
+  text-align: center;
+  font-weight: bold;
+  width: 90%;
+  margin: 3vh 3vw;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: var(--fontColor);
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  background-color: var(--lightBlue);
+  border: none;
+  border-radius: var(--softBorder);
+}
+
+button:hover {
+  box-shadow: inset 0px 0px 2px 2px var(--darkBlue);
+}
+
+button.deck {
+  width: var(--cardW);
+  height: var(--cardH);
+  background-color: var(--cardColor);
+  color: var(--fontColor);
+  font-size: 3rem;
+  margin: 1vh 1vw;
+  overflow: hidden;
+  word-wrap: normal;
+  border-radius: var(--softBorder);
+}
