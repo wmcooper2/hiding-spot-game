@@ -1,4 +1,4 @@
-# Hiding Spot Game
+# [Hiding Spot Game](https://teflassistant.com/hiding-spot-game/)
 Hiding spot game for building vocabulary.
 
 ![Screenshot](screenshot.jpg)
