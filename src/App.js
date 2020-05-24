@@ -4,7 +4,7 @@ import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
 import { misc, fruits, animals, colors } from "./decks";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -36,7 +36,7 @@ class App extends React.Component {
     this.changeScreen = this.changeScreen.bind(this);
     this.updateBoard = this.updateBoard.bind(this);
     this.flipAllCards = this.flipAllCards.bind(this);
-    // this.updateCardSize();
+    this.updateCardSize();
   }
 
   cardClick = (props) => {
@@ -68,9 +68,11 @@ class App extends React.Component {
     let deckName = this.state.deckName;
     let deck = this.deckChoices.filter((choice) => choice.name === deckName);
     deck = deck[0].deck; // because of filter
+
     let boardShape = this.state.boardShape;
     let deckCopy = deck.slice(); //copy so you don't ruin the original
     deckCopy.forEach((item) => (item.flipped = false)); // reset flipped before display
+
     let randomOrder = [];
     const randomLimit = deckCopy.length;
     for (let i = 0; i < randomLimit; i++) {
@@ -141,7 +143,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="main">
           <Route
             exact
@@ -177,7 +179,7 @@ class App extends React.Component {
             {...this.state}
           />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

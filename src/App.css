@@ -82,6 +82,7 @@
   font-size: 1rem;
   background-color: var(--lightBlue);
   color: var(--fontColor);
+  margin-right: 0;
 }
 
 .controls {
