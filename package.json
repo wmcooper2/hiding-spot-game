@@ -2,7 +2,7 @@
   "name": "hiding-spot-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://teflassistant.com/hiding-spot-game/",
+  "homepage": "/hiding-spot-game",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
